@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>postCodeAjax - Demo</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style>
+
+      html {
+        position: relative;
+        min-height: 100%;
+      }
+
+      body {
+        margin-bottom: 60px;
+      }
+
+      #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #f5f5f5;
+      }
+
+      .container .text-muted {
+        margin: 20px 0;
+      }
+
+      #footer > .container {
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>postCodeAjax - Demo</h1>
+      </div>
+      <p class="lead">Plugin desenvolvido para auxiliar o cadastro de endereço,
+        fazendo com que ao digitar o CEP <code>(09351-020 ou 09351020)</code> o
+        sistema retorne e preencha o endereço completo, fazendo foco no campo de número.</p>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h3>Implementação básica <small>Chame o plugin usando o ID do formulário como seletor e configure as classes de cada campo</small></h3>
+      </div>
+      <pre>$('#form1').postcode();</pre>
+      <pre>
+.postcode_ajax - Campo de CEP
+.postcode_btn - Botão de Buscar (anula o envio do formulário mesmo apertando enter)
+.street_ajax - Nome da rua
+.area_ajax - Nome do bairro
+.number_ajax - Número (apenas para foco)
+.city_ajax - Nome da Cidade
+.state_ajax - Nome do Estado (Sigla)</pre>
+      <div class="panel panel-default">
+        <div class="panel-heading">Form1</div>
+        <div class="panel-body">
+          <form id="form1" class="form-horizontal" autocomplete="off">
+            <div class="form-group form-inline">
+              <label class="col-sm-1 control-label">CEP</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
+                <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Endereço</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control street_ajax" placeholder="Endereço">
+              </div>
+              <label class="col-sm-1 control-label">Bairro</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control area_ajax" placeholder="Bairro">
+              </div>
+              <label class="col-sm-1 control-label">Número</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control number_ajax" placeholder="nº">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Cidade</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control city_ajax" placeholder="Cidade">
+              </div>
+              <label class="col-sm-1 control-label">Estado</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control state_ajax"  placeholder="Estado">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h3>Implementação multipla <small>É possível enviar implementar em 2 formularios diferentes com a mesma chamada, mantendo o padrão de classes nos campos</small></h3>
+      </div>
+      <pre>$('#form2,#form3').postcode();</pre>
+      <div class="panel panel-default">
+        <div class="panel-heading">Form2</div>
+        <div class="panel-body">
+          <form id="form2" class="form-horizontal" autocomplete="off">
+            <div class="form-group form-inline">
+              <label class="col-sm-1 control-label">CEP</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
+                <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Endereço</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control street_ajax" placeholder="Endereço">
+              </div>
+              <label class="col-sm-1 control-label">Bairro</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control area_ajax" placeholder="Bairro">
+              </div>
+              <label class="col-sm-1 control-label">Número</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control number_ajax" placeholder="nº">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Cidade</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control city_ajax" placeholder="Cidade">
+              </div>
+              <label class="col-sm-1 control-label">Estado</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control state_ajax"  placeholder="Estado">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Form3</div>
+        <div class="panel-body">
+          <form id="form3" class="form-horizontal" autocomplete="off">
+            <div class="form-group form-inline">
+              <label class="col-sm-1 control-label">CEP</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
+                <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Endereço</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control street_ajax" placeholder="Endereço">
+              </div>
+              <label class="col-sm-1 control-label">Bairro</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control area_ajax" placeholder="Bairro">
+              </div>
+              <label class="col-sm-1 control-label">Número</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control number_ajax" placeholder="nº">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Cidade</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control city_ajax" placeholder="Cidade">
+              </div>
+              <label class="col-sm-1 control-label">Estado</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control state_ajax"  placeholder="Estado">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h3>Implementação personalizada <small>Possibilidade de alteração das classes</small></h3>
+      </div>
+      <pre>
+      $('#form4').postcode({
+        btn: ".postcode_btn_custom",
+        postcode: ".postcode_ajax_custom",
+        street: ".street_ajax_custom",
+        area: ".area_ajax_custom",
+        city: ".city_ajax_custom",
+        state: ".state_ajax_custom",
+        number: ".number_ajax_custom"
+      });</pre>
+      <div class="panel panel-default">
+        <div class="panel-heading">Form4</div>
+        <div class="panel-body">
+          <form id="form4" class="form-horizontal" autocomplete="off">
+            <div class="form-group form-inline">
+              <label class="col-sm-1 control-label">CEP</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control postcode_ajax_custom" placeholder="Digite seu CEP">
+                <button type="submit" class="btn btn-default postcode_btn_custom">Buscar</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Endereço</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control street_ajax_custom" placeholder="Endereço">
+              </div>
+              <label class="col-sm-1 control-label">Bairro</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control area_ajax_custom" placeholder="Bairro">
+              </div>
+              <label class="col-sm-1 control-label">Número</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control number_ajax_custom" placeholder="nº">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Cidade</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control city_ajax_custom" placeholder="Cidade">
+              </div>
+              <label class="col-sm-1 control-label">Estado</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control state_ajax_custom"  placeholder="Estado">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Desenvolvido por: <a href="mailto:contato@mariosmello.com" title="Contato">contato@mariosmello.com</a></p>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="postCodeAjax.js"></script>
+    <script type="text/javascript">
+      $('#form1').postcode();
+      $('#form2,#form3').postcode();
+      $('#form4').postcode({
+        btn: ".postcode_btn_custom",
+        postcode: ".postcode_ajax_custom",
+        street: ".street_ajax_custom",
+        area: ".area_ajax_custom",
+        city: ".city_ajax_custom",
+        state: ".state_ajax_custom",
+        number: ".number_ajax_custom"
+      });
+    </script>
+  </body>
+</html>
