@@ -49,6 +49,11 @@
         left: 217px;
       }
 
+      .alert {
+        width: 90%;
+        margin: 0 auto 20px auto;
+      }
+
     </style>
   </head>
   <body>
@@ -69,14 +74,20 @@
       </div>
       <pre>$('#form1').postcode();</pre>
       <pre>
-.postcode_ajax - Campo de CEP
-.postcode_btn - Botão de Buscar (anula o envio do formulário mesmo apertando enter)
-.street_ajax - Nome da rua
-.area_ajax - Nome do bairro
-.number_ajax - Número (apenas para foco)
-.city_ajax - Nome da Cidade
-.state_ajax - Nome do Estado (Sigla)
-.postcode_loading - Loading exibido no momento da consulta</pre>
+$('#form1').postcode({
+  btn: ".postcode_btn", //botão de busca
+  postcode: ".postcode_ajax", //campo de cep
+  street: ".street_ajax", //campo rua
+  area: ".area_ajax", //campo bairro
+  city: ".city_ajax", //campo cidade
+  state: ".state_ajax", //campo estado (uf)
+  number: ".number_ajax", //campo número. No retorno do ajax este campo ficará com foco
+  loading: ".postcode_loading", //classe de loading, será exibida durante consulta
+  hideSubmit: false, //caso esteja ativo esconde o botão de busca durante a consulta
+  error: 'alert', //exibe o erro caso ocorra em um alert, possíbilidade de alterar para 'form', fazendo com que o erro seja exibido no container definido na propriedade errorForm
+  errorMessage: 'Erro ao realizar a consulta, por favor tente novamente.', //mensagem de erro (caso ocorra)
+  errorForm: '.postcode_error' //container do erro do tipo form
+});</pre>
       <div class="panel panel-default">
         <div class="panel-heading">Form1</div>
         <div class="panel-body">
@@ -201,7 +212,7 @@
       </div>
 
       <div class="page-header">
-        <h3>Implementação personalizada <small>Possibilidade de alteração das classes</small></h3>
+        <h3>Implementação personalizada <small>Possibilidade de alteração das classes. Confira abaixo todas as possíveis personalizações</small></h3>
       </div>
       <pre>
 $('#form4').postcode({
@@ -213,13 +224,17 @@ $('#form4').postcode({
   state: ".state_ajax_custom",
   number: ".number_ajax_custom",
   loading:'.postcode_loading_custom'
-  hideSubmit: true // Oculta o botão de busca durante o loading
+  hideSubmit: true,
+  error: 'form',
+  errorMessage: 'Problema com consulta :(',
+  errorForm: '.postcode_error_custom'
 });</pre>
       <div class="panel panel-default">
         <div class="panel-heading">Form4</div>
         <div class="panel-body">
           <form id="form4" class="form-horizontal" autocomplete="off">
             <div class="form-group form-inline">
+              <div class="alert alert-danger postcode_error_custom"></div>
               <label class="col-sm-1 control-label">CEP</label>
               <div class="col-sm-3">
                 <input type="text" class="form-control postcode_ajax_custom" placeholder="Digite seu CEP">
@@ -278,7 +293,10 @@ $('#form4').postcode({
         state: ".state_ajax_custom",
         number: ".number_ajax_custom",
         loading: '.postcode_loading_custom',
-        hideSubmit: true
+        hideSubmit: true,
+        error: 'form',
+        errorMessage: 'Problema com consulta :(',
+        errorForm: '.postcode_error_custom'
       });
     </script>
   </body>

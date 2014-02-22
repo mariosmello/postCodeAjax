@@ -11,15 +11,26 @@
       state: ".state_ajax",
       number: ".number_ajax",
       loading: ".postcode_loading",
-      hideSubmit: false
+      hideSubmit: false,
+      error: 'alert',
+      errorMessage: 'Erro ao realizar a consulta, por favor tente novamente.',
+      errorForm: '.postcode_error'
     }, options);
 
     this.each(function(index, form) {
 
       $(form).find(settings.loadingClass).hide();
 
-      $(form).find(settings.btn).bind('click', function() {
+      if (settings.error === 'form') {
+        $(form).find(settings.errorForm).hide();
+        $(form).find(settings.postcode).bind('keyup', function() {
+          hideErrorForm($(form));
+        });
+      }
+
+      $(form).find(settings.btn).bind('click', function(e) {
         ajaxPostCode($(form));
+        e.preventDefault();
       });
 
       $(form).find(settings.postcode).keydown(function(e) {
@@ -28,7 +39,6 @@
           e.preventDefault();
         }
       });
-
     });
 
     function ajaxPostCode(form) {
@@ -53,6 +63,21 @@
           form.find(settings['state']).val(data.uf);
           form.find(settings['number']).focus();
         },
+        error: function() {
+          switch (settings['error']) {
+            case 'form':
+              form.find(settings['errorForm']).html(settings['errorMessage']).fadeIn();
+              break;
+            case 'alert':
+              alert(settings['errorMessage']);
+              break;
+          }
+          form.find(settings['street']).val('');
+          form.find(settings['area']).val('');
+          form.find(settings['city']).val('');
+          form.find(settings['state']).val('');
+          form.find(settings['postcode']).focus();
+        },
         complete: function() {
           form.find(settings['loading']).hide();
           form.find(settings['btn']).show();
@@ -60,6 +85,9 @@
       });
     }
 
-  };
+    function hideErrorForm(form) {
+      form.find(settings['errorForm']).fadeOut();
+    }
 
+  };
 }(jQuery));
