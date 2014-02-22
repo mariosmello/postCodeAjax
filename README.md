@@ -6,7 +6,7 @@
 
 <b>Demonstração:</b> <a href="http://lab.mariosmello.com/postCodeAjax/" target="_blank">http://lab.mariosmello.com/postCodeAjax/</a>
 <br>
-<b>Demonstração jsfiddle:</b> <a href="http://jsfiddle.net/DwJcS/embedded/result/" target="_blank">http://jsfiddle.net/DwJcS/embedded/result/</a>
+<b>Demonstração jsfiddle:</b> <a href="http://jsfiddle.net/mariosmello/7JfQr/embedded/result/" target="_blank">http://jsfiddle.net/mariosmello/7JfQr/embedded/result/</a>
 
 ## Uso
 
