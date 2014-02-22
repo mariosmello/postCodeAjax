@@ -56,3 +56,5 @@ $('#form4').postcode({
   errorForm: '.postcode_error_custom'
 });
 ```
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/DwJcS/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
