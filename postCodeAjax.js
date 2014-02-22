@@ -9,10 +9,14 @@
       area: ".area_ajax",
       city: ".city_ajax",
       state: ".state_ajax",
-      number: ".number_ajax"
+      number: ".number_ajax",
+      loading: ".postcode_loading",
+      hideSubmit: false
     }, options);
 
     this.each(function(index, form) {
+
+      $(form).find(settings.loadingClass).hide();
 
       $(form).find(settings.btn).bind('click', function() {
         ajaxPostCode($(form));
@@ -36,6 +40,12 @@
         data: {
           cep: form.find(settings['postcode']).val()
         },
+        beforeSend: function() {
+          form.find(settings['loading']).show();
+          if (settings['hideSubmit'] === true) {
+            form.find(settings['btn']).hide();
+          }
+        },
         success: function(data) {
           form.find(settings['street']).val(data.logradouro);
           form.find(settings['area']).val(data.bairro);
@@ -44,6 +54,8 @@
           form.find(settings['number']).focus();
         },
         complete: function() {
+          form.find(settings['loading']).hide();
+          form.find(settings['btn']).show();
         }
       });
     }

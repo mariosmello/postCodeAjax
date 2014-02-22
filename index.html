@@ -34,6 +34,21 @@
         padding-left: 15px;
       }
 
+      .postcode_loading, .postcode_loading_custom {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: url(loading.gif) no-repeat center center;
+        display: block;
+        top: 3px;
+        left: 273px;
+        display: none;
+      }
+
+      .postcode_loading_custom {
+        left: 217px;
+      }
+
     </style>
   </head>
   <body>
@@ -60,7 +75,8 @@
 .area_ajax - Nome do bairro
 .number_ajax - Número (apenas para foco)
 .city_ajax - Nome da Cidade
-.state_ajax - Nome do Estado (Sigla)</pre>
+.state_ajax - Nome do Estado (Sigla)
+.postcode_loading - Loading exibido no momento da consulta</pre>
       <div class="panel panel-default">
         <div class="panel-heading">Form1</div>
         <div class="panel-body">
@@ -70,6 +86,7 @@
               <div class="col-sm-3">
                 <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
                 <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+                <span class="postcode_loading"></span>
               </div>
             </div>
             <div class="form-group">
@@ -113,6 +130,7 @@
               <div class="col-sm-3">
                 <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
                 <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+                <span class="postcode_loading"></span>
               </div>
             </div>
             <div class="form-group">
@@ -151,6 +169,7 @@
               <div class="col-sm-3">
                 <input type="text" class="form-control postcode_ajax" placeholder="Digite seu CEP">
                 <button type="submit" class="btn btn-default postcode_btn">Buscar</button>
+                <span class="postcode_loading"></span>
               </div>
             </div>
             <div class="form-group">
@@ -185,15 +204,17 @@
         <h3>Implementação personalizada <small>Possibilidade de alteração das classes</small></h3>
       </div>
       <pre>
-      $('#form4').postcode({
-        btn: ".postcode_btn_custom",
-        postcode: ".postcode_ajax_custom",
-        street: ".street_ajax_custom",
-        area: ".area_ajax_custom",
-        city: ".city_ajax_custom",
-        state: ".state_ajax_custom",
-        number: ".number_ajax_custom"
-      });</pre>
+$('#form4').postcode({
+  btn: ".postcode_btn_custom",
+  postcode: ".postcode_ajax_custom",
+  street: ".street_ajax_custom",
+  area: ".area_ajax_custom",
+  city: ".city_ajax_custom",
+  state: ".state_ajax_custom",
+  number: ".number_ajax_custom",
+  loading:'.postcode_loading_custom'
+  hideSubmit: true // Oculta o botão de busca durante o loading
+});</pre>
       <div class="panel panel-default">
         <div class="panel-heading">Form4</div>
         <div class="panel-body">
@@ -203,6 +224,7 @@
               <div class="col-sm-3">
                 <input type="text" class="form-control postcode_ajax_custom" placeholder="Digite seu CEP">
                 <button type="submit" class="btn btn-default postcode_btn_custom">Buscar</button>
+                <span class="postcode_loading_custom"></span>
               </div>
             </div>
             <div class="form-group">
@@ -254,7 +276,9 @@
         area: ".area_ajax_custom",
         city: ".city_ajax_custom",
         state: ".state_ajax_custom",
-        number: ".number_ajax_custom"
+        number: ".number_ajax_custom",
+        loading: '.postcode_loading_custom',
+        hideSubmit: true
       });
     </script>
   </body>
