@@ -5,6 +5,8 @@
 > o endereço completo, fazendo foco no campo número.
 
 <b>Demostração:</b> <a href="http://lab.mariosmello.com/postCodeAjax/" target="_blank">http://lab.mariosmello.com/postCodeAjax/</a>
+<br>
+<b>Demostração jsfiddle:</b> <a href="http://jsfiddle.net/DwJcS/embedded/result/" target="_blank">http://jsfiddle.net/DwJcS/embedded/result/</a>
 
 ## Uso
 
@@ -56,5 +58,3 @@ $('#form4').postcode({
   errorForm: '.postcode_error_custom'
 });
 ```
-
-<iframe width="100%" height="300" src="http://jsfiddle.net/DwJcS/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
