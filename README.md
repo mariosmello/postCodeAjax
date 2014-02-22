@@ -4,9 +4,9 @@
 > digitar o CEP <code>(09351-020 ou 09351020)</code> o sistema retorne e preencha
 > o endereço completo, fazendo foco no campo número.
 
-<b>Demostração:</b> <a href="http://lab.mariosmello.com/postCodeAjax/" target="_blank">http://lab.mariosmello.com/postCodeAjax/</a>
+<b>Demonstração:</b> <a href="http://lab.mariosmello.com/postCodeAjax/" target="_blank">http://lab.mariosmello.com/postCodeAjax/</a>
 <br>
-<b>Demostração jsfiddle:</b> <a href="http://jsfiddle.net/DwJcS/embedded/result/" target="_blank">http://jsfiddle.net/DwJcS/embedded/result/</a>
+<b>Demonstração jsfiddle:</b> <a href="http://jsfiddle.net/DwJcS/embedded/result/" target="_blank">http://jsfiddle.net/DwJcS/embedded/result/</a>
 
 ## Uso
 
@@ -15,7 +15,7 @@ Forma de uso simplificada:
 ```js
 $('#form1').postcode();
 ```
-Ou com muliplos formulários
+Ou com múltiplos formulários
 
 ```js
 $('#form2,#form3').postcode();
@@ -34,7 +34,7 @@ $('#form1').postcode({
   number: ".number_ajax", //campo número. No retorno do ajax este campo ficará com foco
   loading: ".postcode_loading", //classe de loading, será exibida durante consulta
   hideSubmit: false, //caso esteja ativo esconde o botão de busca durante a consulta
-  error: 'alert', //exibe o erro caso ocorra em um alert, possíbilidade de alterar para 'form', fazendo com que o erro seja exibido no container definido na propriedade errorForm
+  error: 'alert', //exibe o erro caso ocorra em um alert, possibilidade  de alterar para 'form', fazendo com que o erro seja exibido no container definido na propriedade errorForm
   errorMessage: 'Erro ao realizar a consulta, por favor tente novamente.', //mensagem de erro (caso ocorra)
   errorForm: '.postcode_error' //container do erro do tipo form
 });
